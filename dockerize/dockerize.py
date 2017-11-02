@@ -222,7 +222,8 @@ class Dockerize(object):
         for libdir in deps.prefixes():
             for nsslib in ['libnss_dns.so.2',
                            'libnss_files.so.2',
-                           'libnss_compat.so.2']:
+                           'libnss_compat.so.2',
+                           'libresolv.so.2']:
                 src = os.path.join(libdir, nsslib)
                 LOG.info('looking for %s', src)
                 if os.path.exists(src):

@@ -13,16 +13,9 @@ from .dockerize import Dockerize, SymlinkOptions
 LOG = logging.getLogger(__name__)
 
 FILETOOLS = [
-    '/bin/ls',
-    '/bin/mkdir',
-    '/bin/chmod',
-    '/bin/chown',
-    '/bin/rm',
-    '/bin/cat',
-    '/bin/grep',
+    '/bin/sh',
     '/bin/sed',
 ]
-
 
 def parse_args():
     parser = argparse.ArgumentParser(description=__description__)
