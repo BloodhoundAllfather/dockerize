@@ -13,7 +13,7 @@ from .dockerize import Dockerize, SymlinkOptions
 LOG = logging.getLogger(__name__)
 
 FILETOOLS = [
-    '/bin/sh',
+    '/bin/dash',
     '/bin/sed',
     '/bin/ps',
     '/usr/bin/lsof'
