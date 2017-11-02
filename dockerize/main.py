@@ -15,6 +15,8 @@ LOG = logging.getLogger(__name__)
 FILETOOLS = [
     '/bin/sh',
     '/bin/sed',
+    '/bin/ps',
+    '/usr/bin/lsof'
 ]
 
 def parse_args():
