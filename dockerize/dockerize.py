@@ -10,6 +10,7 @@ import logging
 import os
 import pwd
 import shlex
+import stat
 import shutil
 import subprocess
 import tempfile
@@ -172,7 +173,7 @@ class Dockerize(object):
         target_dir = os.path.dirname(target)
         source_dir = os.path.dirname(src)
         source_mode = os.stat(source_dir)
-        self.makedirs(target_dir, source_mode.st_mode)
+        self.makedirs(target_dir, stat.S_IMODE(source_mode.st_mode))
 
         cmd = ['rsync', '-a']
 
