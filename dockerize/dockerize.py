@@ -137,9 +137,9 @@ class Dockerize(object):
             fde.write(tmpl.render(controller=self,
                                   docker=self.docker))
 
-    def makedirs(self, path):
+    def makedirs(self, path, mode):
         if not os.path.isdir(path):
-            os.makedirs(path)
+            os.makedirs(path, mode)
 
     def populate(self):
         '''Add config files to the image using built-in templates.  This is
@@ -147,7 +147,7 @@ class Dockerize(object):
         files.'''
 
         LOG.info('populating misc config files')
-        self.makedirs(os.path.join(self.targetdir, 'etc'))
+        self.makedirs(os.path.join(self.targetdir, 'etc'), 0755)
         for path in ['passwd', 'group', 'nsswitch.conf']:
             tmpl = self.env.get_template(path)
             with open(os.path.join(self.targetdir, 'etc', path), 'w') as fde:
