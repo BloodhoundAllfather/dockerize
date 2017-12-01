@@ -138,9 +138,9 @@ class Dockerize(object):
             fde.write(tmpl.render(controller=self,
                                   docker=self.docker))
 
-    def makedirs(self, path, mode):
+    def makedirs(self, path):
         if not os.path.isdir(path):
-            os.makedirs(path, mode)
+            os.makedirs(path)
 
     def populate(self):
         '''Add config files to the image using built-in templates.  This is
@@ -148,7 +148,7 @@ class Dockerize(object):
         files.'''
 
         LOG.info('populating misc config files')
-        self.makedirs(os.path.join(self.targetdir, 'etc'), 0755)
+        self.makedirs(os.path.join(self.targetdir, 'etc'))
         for path in ['passwd', 'group', 'nsswitch.conf']:
             tmpl = self.env.get_template(path)
             with open(os.path.join(self.targetdir, 'etc', path), 'w') as fde:
@@ -171,9 +171,7 @@ class Dockerize(object):
         LOG.info('copying file %s to %s', src, dst)
         target = os.path.join(self.targetdir, dst[1:])
         target_dir = os.path.dirname(target)
-        source_dir = os.path.dirname(src)
-        source_mode = os.stat(source_dir)
-        self.makedirs(target_dir, stat.S_IMODE(source_mode.st_mode))
+        self.makedirs(target_dir)
 
         cmd = ['rsync', '-a']
 
