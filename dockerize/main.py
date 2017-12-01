@@ -16,7 +16,9 @@ FILETOOLS = [
     '/bin/dash',
     '/bin/sed',
     '/bin/ps',
-    '/usr/bin/lsof'
+    '/usr/bin/lsof',
+    '/bin/cp',
+    '/bin/chmod'
 ]
 
 def parse_args():
