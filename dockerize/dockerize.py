@@ -181,9 +181,9 @@ class Dockerize(object):
         if not os.path.isdir(target_dir):
             os.makedirs(target_dir)
             os.chmod(target_dir, source_mode)
-
-        target_mode = os.stat(target_dir).st_mode
-        LOG.debug('target mode %s', oct(stat.S_IMODE(target_mode)))
+            LOG.debug('creating target %s', target_dir)
+            target_mode = os.stat(target_dir).st_mode
+            LOG.debug('target mode %s', oct(stat.S_IMODE(target_mode)))
 
         cmd = ['rsync', '-a', '-p']
 
