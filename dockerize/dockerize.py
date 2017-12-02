@@ -173,7 +173,7 @@ class Dockerize(object):
         target_dir = os.path.dirname(target)
         self.makedirs(target_dir)
 
-        cmd = ['rsync', '-a']
+        cmd = ['rsync', '-a', '-p']
 
         # Add flag to rsync command line corresponding to the select
         # symlink handling method.
