@@ -178,7 +178,11 @@ class Dockerize(object):
         LOG.debug('src %s', src)
         LOG.debug('source mode %s', oct(stat.S_IMODE(source_mode)))
 
-        self.makedirs(target_dir)
+        if not os.path.isdir(target_dir):
+            os.makedirs(target_dir, source_mode)
+
+        target_mode = os.stat(target_dir).st_mode
+        LOG.debug('target mode %s', oct(stat.S_IMODE(target_mode)))
 
         cmd = ['rsync', '-a', '-p']
 
