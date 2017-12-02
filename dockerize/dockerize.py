@@ -179,7 +179,8 @@ class Dockerize(object):
         LOG.debug('source mode %s', oct(stat.S_IMODE(source_mode)))
 
         if not os.path.isdir(target_dir):
-            os.makedirs(target_dir, source_mode)
+            os.makedirs(target_dir)
+            os.chmod(target_dir, source_mode)
 
         target_mode = os.stat(target_dir).st_mode
         LOG.debug('target mode %s', oct(stat.S_IMODE(target_mode)))
