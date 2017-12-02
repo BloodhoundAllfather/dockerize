@@ -13,6 +13,7 @@ import shlex
 import stat
 import shutil
 import subprocess
+import stat
 import tempfile
 
 from jinja2 import Environment, PackageLoader
@@ -175,7 +176,7 @@ class Dockerize(object):
         source_mode = os.stat(source_dir)
         LOG.debug('target %s', target)
         LOG.debug('src %s', src)
-        LOG.debug('source mode %s', stat.S_IMODE(source_mode))
+        LOG.debug('source mode %s', oct(stat.S_IMODE(source_mode)))
 
         self.makedirs(target_dir)
 
