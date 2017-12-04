@@ -172,18 +172,13 @@ class Dockerize(object):
         LOG.info('copying file %s to %s', src, dst)
         target = os.path.join(self.targetdir, dst[1:])
         target_dir = os.path.dirname(target)
+
         source_dir = os.path.dirname(src)
         source_mode = os.stat(source_dir).st_mode
-        LOG.debug('target %s', target)
-        LOG.debug('src %s', src)
-        LOG.debug('source mode %s', oct(stat.S_IMODE(source_mode)))
 
         if not os.path.isdir(target_dir):
             os.makedirs(target_dir)
             os.chmod(target_dir, source_mode)
-            LOG.debug('creating target %s', target_dir)
-            target_mode = os.stat(target_dir).st_mode
-            LOG.debug('target mode %s', oct(stat.S_IMODE(target_mode)))
 
         cmd = ['rsync', '-a', '-p']
 
