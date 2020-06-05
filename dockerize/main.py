@@ -13,11 +13,14 @@ from .dockerize import Dockerize, SymlinkOptions
 LOG = logging.getLogger(__name__)
 
 FILETOOLS = [
-    '/bin/dash',
+    '/bin/bash',
     '/bin/sed',
     '/bin/ps',
     '/usr/bin/lsof',
-    '/bin/cp'
+    '/bin/cp',
+    '/bin/wc',
+    '/usr/bin/dpkg',
+    '/usr/bin/rpm'
 ]
 
 def parse_args():
