@@ -231,7 +231,12 @@ class Dockerize(object):
             for nsslib in ['libnss_dns.so.2',
                            'libnss_files.so.2',
                            'libnss_compat.so.2',
-                           'libresolv.so.2']:
+                           'libresolv.so.2',
+                           # rpm
+                           'ld-2.28.so',
+                           'libsqlite3.so.0',
+                           'libfreeblpriv3.so',
+                           'libsoftokn3.so']:
                 src = os.path.join(libdir, nsslib)
                 LOG.info('looking for %s', src)
                 if os.path.exists(src):
