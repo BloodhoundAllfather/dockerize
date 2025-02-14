@@ -40,6 +40,7 @@ class ELFFile(dict):
         try:
             out = subprocess.check_output(['objdump', '-h', self.path],
                                           stderr=subprocess.STDOUT)
+            out = out.decode('utf-8')
         except subprocess.CalledProcessError:
             raise ValueError(self.path)
 
